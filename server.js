@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,63 +20,53 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
 });
 
-// db.Workout.create({ name: "Workout" })
-//   .then((dbWorkout) => {
-//     console.log(dbWorkout);
-//   })
-//   .catch(({ message }) => {
-//     console.log(message);
-//   });
-
-// app.post("/submit", ({body}, res) => {
-//   db.Book.create(body)
-//     .then(({_id}) => db.Library.findOneAndUpdate({}, { $push: { books: _id } }, { new: true }))
-//     .then(dbLibrary => {
-//       res.json(dbLibrary);
-//     })
-//     .catch(err => {
-//       res.json(err);
-//     });
-// });
-
-// app.get("/api/workouts", (req, res) => {
-//   db.Workout.find({})
-//     .then((dbWorkout) => {
-//       res.json(dbWorkout);
-//     })
-//     .catch((err) => {
-//       res.json(err);
-//     });
-// });
-
-app.get("/stats", (req, res) => {
-  db.Workout.find({})
-    .populate("totals")
-    .then((workout) => {
-      res.json(workout);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
+//render html routes
+app.get("/exercise", function (req, res) {
+  res.sendFile(path.join(__dirname + "/public/exercise.html"));
 });
 
+app.get("/stats", function (req, res) {
+  res.sendFile(path.join(__dirname + "/public/stats.html"));
+});
+
+//API routs to get data
 app.get("/api/workouts", (req, res) => {
   db.Workout.find({})
-    .then((workout) => {
-      res.json(workout);
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
     })
     .catch((err) => {
-      res.json(err);
+      res.status(400).json(err);
     });
 });
 
-app.get("/api/workouts/range", (req, res) => {
+app.get("/api/workouts/range", ({}, res) => {
   db.Workout.find({})
-    .then((workout) => {
-      res.json(workout);
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
     })
     .catch((err) => {
-      res.json(err);
+      res.status(400).json(err);
+    });
+});
+
+app.post("/api/workouts/", (req, res) => {
+  db.Workout.create(req.body)
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+app.put("/api/workouts/:id", (req, res) => {
+  db.Workout.findByIdAndUpdate({ _id: req.params.id }, { exercises: req.body })
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
     });
 });
 
