@@ -26,6 +26,10 @@ mongoose.connect(
   }
 );
 
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", {
+//   useNewUrlParser: true,
+// });
+
 //render html routes
 app.get("/exercise", function (req, res) {
   res.sendFile(path.join(__dirname + "/public/exercise.html"));
@@ -68,6 +72,13 @@ app.post("/api/workouts/", (req, res) => {
 
 app.put("/api/workouts/:id", (req, res) => {
   db.Workout.findByIdAndUpdate({ _id: req.params.id }, { exercises: req.body })
+    .aggregate([
+      {
+        $addFields: {
+          totalDuration: { $sum: "$duration" },
+        },
+      },
+    ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
