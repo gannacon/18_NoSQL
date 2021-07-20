@@ -1,61 +1,91 @@
-# Unit 18 Nosql Homework: Workout Tracker
+# TechBlog 14_MVC
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Description
+
+For this assignment I was tasked with creating a fitness tracker app. I did this by creating a mongo database and mongoose schema with Express to handle the routes.
+
+## Table of Contents
+
+- [Deployment](#deployment)
+- [User Story](#user-story)
+- [Mock-Up](#mock-up)
+- [Acceptance Criteria](#acceptance-criteria)
+- [License](#license)
+- [Contribute](#contribute)
+
+## Deployment
+
+The app can be found at this link:
+https://damp-cove-83188.herokuapp.com/?id=60f60df50b56150015cd58f3
 
 ## User Story
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+```md
+As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+```
 
-## Business Context
+## Mock-Up
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
+The following image shows a screenshot of the deployed application.
+
+![Integration using Insomnia](./images/screenshot.png)
 
 ## Acceptance Criteria
 
+```md
 When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
 
 The user should be able to:
 
-  * Add exercises to the most recent workout plan.
+- Add exercises to the most recent workout plan.
 
-  * Add new exercises to a new workout plan.
+- Add new exercises to a new workout plan.
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+- View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
 
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
+- View the total duration of each workout from the past seven workouts on the `stats` page.
+```
 
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
+## License
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
+Licensed under the [MIT](https://choosealicense.com/licenses/mit/)
 
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
+    MIT License
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
+    Copyright (c) [2021] [Connor Gannaway]
 
-## Commit Early and Often
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+## Contribute
 
-Follow these guidelines for committing:
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+Please give me credit! This is not an original idea but an original way to create this.
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
+## Questions
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+If you have any questions regarding this application please contact me at my GitHub here: (github.com/gannacon)
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+Or Send me an email: cwgannaway@gmail.com
 
-We want you to have well over 200 commits by graduation, so commit early and often!
+---
 
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
+© 2021 Connor Gannaway. All Rights Reserved.
