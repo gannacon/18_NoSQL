@@ -41,7 +41,13 @@ app.get("/stats", function (req, res) {
 
 //API routs to get data
 app.get("/api/workouts", (req, res) => {
-  db.Workout.find({})
+  db.Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$duration" },
+      },
+    },
+  ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -51,7 +57,13 @@ app.get("/api/workouts", (req, res) => {
 });
 
 app.get("/api/workouts/range", ({}, res) => {
-  db.Workout.find({})
+  db.Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: { $sum: "$duration" },
+      },
+    },
+  ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -72,13 +84,6 @@ app.post("/api/workouts/", (req, res) => {
 
 app.put("/api/workouts/:id", (req, res) => {
   db.Workout.findByIdAndUpdate({ _id: req.params.id }, { exercises: req.body })
-    .aggregate([
-      {
-        $addFields: {
-          totalDuration: { $sum: "$duration" },
-        },
-      },
-    ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
